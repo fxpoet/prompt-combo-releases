@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-03-26T00:01:00Z",
+  "items": [
+    {
+      "id": "test",
+      "provider": "Test",
+      "type": "CLI",
+      "models": [
+        {
+          "name": "test-model",
+          "short": "TestModel"
+        }
+      ],
+      "url": "",
+      "requireFields": [],
+      "enabled": true,
+      "worker": "test"
+    },
+    {
+      "id": "claude-cli",
+      "provider": "ClaudeCode",
+      "type": "CLI",
+      "models": [
+        {
+          "name": "opus-4",
+          "short": "Opus4",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        {
+          "name": "sonnet-4",
+          "short": "Sonnet4"
+        }
+      ],
+      "url": "",
+      "requireFields": [],
+      "enabled": true,
+      "worker": "claude-cli",
+      "maxConcurrency": 3
+    },
+    {
+      "id": "codex-cli",
+      "provider": "Codex CLI",
+      "type": "CLI",
+      "models": [
+        {
+          "name": "codex-model",
+          "short": "Codex"
+        }
+      ],
+      "url": "",
+      "requireFields": [],
+      "enabled": true,
+      "worker": "codex-cli",
+      "maxConcurrency": 3
+    },
+    {
+      "id": "gemini-cli",
+      "provider": "Gemini CLI",
+      "type": "CLI",
+      "models": [
+        {
+          "name": "gemini-model",
+          "short": "GeminiTest"
+        }
+      ],
+      "url": "",
+      "requireFields": [],
+      "enabled": true,
+      "worker": "gemini-cli",
+      "maxConcurrency": 3
+    },
+    {
+      "id": "glm-cc-cli",
+      "provider": "GLM (ClaudeCode)",
+      "type": "CLI",
+      "models": [
+        {
+          "name": "glm-5",
+          "short": "GLM 5"
+        }
+      ],
+      "url": "https://api.z.ai/api/anthropic",
+      "requireFields": [
+        "apiKey"
+      ],
+      "enabled": true,
+      "worker": "claude-cli",
+      "maxConcurrency": 3,
+      "env": {
+        "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
+        "ANTHROPIC_MODEL": "glm-5",
+        "ANTHROPIC_SMALL_FAST_MODEL": "glm-4.5-air",
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5"
+      }
+    },
+    {
+      "id": "minimax-cc-cli",
+      "provider": "Minimax (ClaudeCode)",
+      "type": "CLI",
+      "models": [
+        {
+          "name": "minimax-m2.7",
+          "short": "Minimax M2.7"
+        }
+      ],
+      "url": "https://api.minimax.io/anthropic",
+      "requireFields": [
+        "apiKey"
+      ],
+      "enabled": true,
+      "worker": "claude-cli",
+      "maxConcurrency": 3,
+      "env": {
+        "ANTHROPIC_BASE_URL": "https://api.minimax.io/anthropic",
+        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+        "ANTHROPIC_MODEL": "MiniMax-M2.7",
+        "ANTHROPIC_SMALL_FAST_MODEL": "MiniMax-M2.7",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7",
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7"
+      }
+    },
+    {
+      "id": "claude-api",
+      "provider": "ClaudeAPI",
+      "type": "REST",
+      "models": [
+        {
+          "name": "claude-opus-4-20250514",
+          "short": "Opus4"
+        },
+        {
+          "name": "claude-sonnet-4-20250514",
+          "short": "Sonnet4",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "url": "https://api.anthropic.com/v1/messages",
+      "requireFields": [
+        "apiKey"
+      ],
+      "enabled": true,
+      "worker": "claude-api",
+      "maxConcurrency": 5
+    },
+    {
+      "id": "openai",
+      "provider": "OpenAI",
+      "type": "REST",
+      "models": [
+        {
+          "name": "gpt-4o",
+          "short": "GPT4o"
+        },
+        {
+          "name": "gpt-4o-mini",
+          "short": "GPT4oMini"
+        },
+        {
+          "name": "o1",
+          "short": "O1"
+        },
+        {
+          "name": "o3-mini",
+          "short": "O3Mini",
+          "efforts": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ],
+      "url": "https://api.openai.com/v1/chat/completions",
+      "requireFields": [
+        "apiKey"
+      ],
+      "enabled": true,
+      "worker": "openai-api",
+      "maxConcurrency": 5
+    }
+  ]
+}
