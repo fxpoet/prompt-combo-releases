@@ -1,0 +1,475 @@
+{
+    "schemaVersion": 2,
+    "lastUpdated": "2026-05-11T01:01:00Z",
+    "items": [
+        {
+            "providerId": "builtin.claude-cli/claude-cli",
+            "displayName": "ClaudeCode",
+            "type": "CLI",
+            "workerId": "builtin.claude-cli/claude-cli",
+            "enabled": true,
+            "requiredFields": [],
+            "maxConcurrency": 3,
+            "preferredColorIds": [
+                "claude-orange",
+                "lavender-soft"
+            ],
+            "models": [
+                {
+                    "name": "opus",
+                    "short": "Opus",
+                    "pricing": {
+                        "input": 5,
+                        "output": 25,
+                        "cached": 0
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh",
+                        "max"
+                    ],
+                    "tier": 1
+                },
+                {
+                    "name": "sonnet",
+                    "short": "Sonnet",
+                    "pricing": {
+                        "input": 3,
+                        "output": 15,
+                        "cached": 0
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh",
+                        "max"
+                    ],
+                    "tier": 2
+                },
+                {
+                    "name": "haiku",
+                    "short": "Haiku",
+                    "pricing": {
+                        "input": 1,
+                        "output": 5,
+                        "cached": 0
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh",
+                        "max"
+                    ],
+                    "tier": 3
+                }
+            ]
+        },
+        {
+            "providerId": "builtin.codex-cli/codex-cli",
+            "displayName": "Codex CLI",
+            "type": "CLI",
+            "workerId": "builtin.codex-cli/codex-cli",
+            "enabled": true,
+            "requiredFields": [],
+            "maxConcurrency": 3,
+            "preferredColorIds": [
+                "codex-teal",
+                "sky-blue"
+            ],
+            "models": [
+                {
+                    "name": "gpt-5.5",
+                    "short": "GPT 5.5",
+                    "pricing": {
+                        "input": 5,
+                        "output": 30,
+                        "cached": 0.5
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 1
+                },
+                {
+                    "name": "gpt-5.4",
+                    "short": "GPT 5.4",
+                    "pricing": {
+                        "input": 2.5,
+                        "output": 15,
+                        "cached": 0.25
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 1
+                },
+                {
+                    "name": "gpt-5.4-mini",
+                    "short": "GPT 5.4M",
+                    "pricing": {
+                        "input": 0.75,
+                        "output": 4.5,
+                        "cached": 0.075
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 3
+                },
+                {
+                    "name": "gpt-5.3-codex",
+                    "short": "Codex 5.3",
+                    "pricing": {
+                        "input": 1.75,
+                        "output": 14,
+                        "cached": 0.175
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 2
+                },
+                {
+                    "name": "gpt-5.3-codex-spark",
+                    "short": "Codex 5.3 Spark",
+                    "pricing": {
+                        "input": 1.75,
+                        "output": 14,
+                        "cached": 0.175
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 2
+                }
+            ]
+        },
+        {
+            "providerId": "builtin.gemini-cli/gemini-cli",
+            "displayName": "Gemini CLI",
+            "type": "CLI",
+            "workerId": "builtin.gemini-cli/gemini-cli",
+            "enabled": true,
+            "requiredFields": [],
+            "maxConcurrency": 3,
+            "preferredColorIds": [
+                "gemini-blue",
+                "sky-blue"
+            ],
+            "models": [
+                {
+                    "name": "auto",
+                    "short": "Gemini Auto",
+                    "pricing": {
+                        "input": 1.25,
+                        "output": 10,
+                        "cached": 0
+                    },
+                    "tier": 1
+                },
+                {
+                    "name": "gemini-3-pro-preview",
+                    "short": "Gem3 Pro",
+                    "pricing": {
+                        "input": 1.25,
+                        "output": 10,
+                        "cached": 0
+                    },
+                    "tier": 1
+                },
+                {
+                    "name": "gemini-2.5-pro",
+                    "short": "Gem2 Pro",
+                    "pricing": {
+                        "input": 1.25,
+                        "output": 10,
+                        "cached": 0
+                    },
+                    "tier": 1
+                },
+                {
+                    "name": "gemini-2.5-flash",
+                    "short": "Gem2 Flash",
+                    "pricing": {
+                        "input": 0.3,
+                        "output": 2.5,
+                        "cached": 0
+                    },
+                    "tier": 2
+                },
+                {
+                    "name": "gemini-2.5-flash-lite",
+                    "short": "Gem2 Lite",
+                    "pricing": {
+                        "input": 0.1,
+                        "output": 0.4,
+                        "cached": 0
+                    },
+                    "tier": 3
+                }
+            ]
+        },
+        {
+            "providerId": "builtin.claude-cli/glm-cc-cli",
+            "displayName": "GLM (ClaudeCode)",
+            "type": "CLI",
+            "workerId": "builtin.claude-cli/claude-cli",
+            "enabled": true,
+            "url": "https://api.z.ai/api/anthropic",
+            "requiredFields": [
+                "apiKey"
+            ],
+            "maxConcurrency": 3,
+            "env": {
+                "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
+                "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.1",
+                "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5-turbo",
+                "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
+                "ANTHROPIC_MODEL": "glm-5.1",
+                "ANTHROPIC_SMALL_FAST_MODEL": "glm-4.5-air"
+            },
+            "preferredColorIds": [
+                "claude-orange",
+                "lavender-soft"
+            ],
+            "models": [
+                {
+                    "name": "glm-5.1",
+                    "short": "GLM 5.1",
+                    "pricing": {
+                        "input": 1.4,
+                        "output": 4.4,
+                        "cached": 0.26
+                    },
+                    "tier": 1
+                },
+                {
+                    "name": "glm-5-turbo",
+                    "short": "GLM 5 Turbo",
+                    "pricing": {
+                        "input": 1.2,
+                        "output": 4,
+                        "cached": 0.24
+                    },
+                    "tier": 2
+                },
+                {
+                    "name": "glm-5",
+                    "short": "GLM 5",
+                    "pricing": {
+                        "input": 1,
+                        "output": 3.2,
+                        "cached": 0.2
+                    },
+                    "tier": 2
+                },
+                {
+                    "name": "glm-4.7",
+                    "short": "GLM 4.7",
+                    "pricing": {
+                        "input": 0.6,
+                        "output": 2.2,
+                        "cached": 0.11
+                    },
+                    "tier": 2
+                },
+                {
+                    "name": "glm-4.7-flash",
+                    "short": "GLM 4.7 Flash",
+                    "pricing": {
+                        "input": 0,
+                        "output": 0,
+                        "cached": 0
+                    },
+                    "tier": 3
+                },
+                {
+                    "name": "glm-4.5-air",
+                    "short": "GLM 4.5 Air",
+                    "pricing": {
+                        "input": 0.2,
+                        "output": 1.1,
+                        "cached": 0.03
+                    },
+                    "tier": 3
+                }
+            ]
+        },
+        {
+            "providerId": "builtin.claude-cli/minimax-cc-cli",
+            "displayName": "Minimax (ClaudeCode)",
+            "type": "CLI",
+            "workerId": "builtin.claude-cli/claude-cli",
+            "enabled": true,
+            "url": "https://api.minimax.io/anthropic",
+            "requiredFields": [
+                "apiKey"
+            ],
+            "maxConcurrency": 3,
+            "env": {
+                "ANTHROPIC_BASE_URL": "https://api.minimax.io/anthropic",
+                "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+                "ANTHROPIC_MODEL": "MiniMax-M2.7",
+                "ANTHROPIC_SMALL_FAST_MODEL": "MiniMax-M2.7",
+                "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
+                "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7",
+                "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7"
+            },
+            "preferredColorIds": [
+                "lavender-soft",
+                "plum"
+            ],
+            "models": [
+                {
+                    "name": "minimax-m2.7",
+                    "short": "Minimax M2.7",
+                    "tier": 1
+                }
+            ]
+        },
+        {
+            "providerId": "builtin.openai-api/openai",
+            "displayName": "OpenAI (API)",
+            "type": "REST",
+            "workerId": "builtin.openai-api/openai-api",
+            "enabled": true,
+            "url": "https://api.openai.com/v1/responses",
+            "requiredFields": [
+                "apiKey"
+            ],
+            "maxConcurrency": 5,
+            "preferredColorIds": [
+                "openai-green",
+                "sage-green"
+            ],
+            "models": [
+                {
+                    "name": "gpt-5.5",
+                    "short": "GPT 5.5",
+                    "pricing": {
+                        "input": 5,
+                        "output": 30,
+                        "cached": 0.5
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 1
+                },
+                {
+                    "name": "gpt-5.4",
+                    "short": "GPT 5.4",
+                    "pricing": {
+                        "input": 2.5,
+                        "output": 15,
+                        "cached": 0.25
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 1
+                },
+                {
+                    "name": "gpt-5.4-mini",
+                    "short": "GPT 5.4M",
+                    "pricing": {
+                        "input": 0.75,
+                        "output": 4.5,
+                        "cached": 0.075
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 3
+                },
+                {
+                    "name": "gpt-5.4-nano",
+                    "short": "GPT 5.4N",
+                    "pricing": {
+                        "input": 0.2,
+                        "output": 1.25,
+                        "cached": 0.02
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high",
+                        "xhigh"
+                    ],
+                    "tier": 3
+                }
+            ]
+        },
+        {
+            "providerId": "builtin.claude-api/claude-api",
+            "displayName": "Claude (API)",
+            "type": "REST",
+            "workerId": "builtin.claude-api/claude-api",
+            "enabled": true,
+            "url": "https://api.anthropic.com/v1/messages",
+            "requiredFields": [
+                "apiKey"
+            ],
+            "maxConcurrency": 5,
+            "preferredColorIds": [
+                "claude-orange",
+                "lavender-soft"
+            ],
+            "models": [
+                {
+                    "name": "claude-opus-4-20250514",
+                    "short": "Opus4",
+                    "pricing": {
+                        "input": 15,
+                        "output": 75,
+                        "cached": 0
+                    },
+                    "tier": 1
+                },
+                {
+                    "name": "claude-sonnet-4-20250514",
+                    "short": "Sonnet4",
+                    "pricing": {
+                        "input": 3,
+                        "output": 15,
+                        "cached": 0
+                    },
+                    "efforts": [
+                        "low",
+                        "medium",
+                        "high"
+                    ],
+                    "tier": 2
+                }
+            ]
+        }
+    ]
+}
