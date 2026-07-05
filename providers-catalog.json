@@ -1,475 +1,301 @@
 {
-    "schemaVersion": 2,
-    "lastUpdated": "2026-05-11T01:01:00Z",
-    "items": [
+  "schemaVersion": 3,
+  "lastUpdated": "2026-07-04T00:00:00Z",
+  "harnesses": [
+    { "id": "claude-cli", "displayName": "Claude Code CLI" },
+    { "id": "claude-terminal", "displayName": "ClaudeCode Terminal" },
+    { "id": "codex-cli", "displayName": "Codex CLI" },
+    { "id": "gemini-cli", "displayName": "Gemini CLI" },
+    { "id": "openai-api", "displayName": "OpenAI API" },
+    { "id": "openai-compat", "displayName": "OpenAI Compatible API" },
+    { "id": "claude-api", "displayName": "Claude API" },
+    { "id": "cursor-cli", "displayName": "Cursor CLI" },
+    { "id": "openai-image", "displayName": "OpenAI Image" },
+    { "id": "gemini-image", "displayName": "Gemini Image" }
+  ],
+  "backends": [
+    { "id": "claude-harness", "protocol": "claude-code", "auth": "harness", "injectVia": "none" },
+    { "id": "codex-harness", "protocol": "codex", "auth": "harness", "injectVia": "none" },
+    { "id": "gemini-harness", "protocol": "gemini", "auth": "harness", "injectVia": "none" },
+    {
+      "id": "glm-anthropic-env",
+      "protocol": "anthropic-compatible",
+      "auth": "apiKey",
+      "injectVia": "env",
+      "baseUrl": "https://api.z.ai/api/anthropic",
+      "env": {
+        "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.2",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5-turbo",
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
+        "ANTHROPIC_MODEL": "glm-5.2",
+        "ANTHROPIC_SMALL_FAST_MODEL": "glm-4.5-air"
+      }
+    },
+    {
+      "id": "minimax-anthropic-env",
+      "protocol": "anthropic-compatible",
+      "auth": "apiKey",
+      "injectVia": "env",
+      "baseUrl": "https://api.minimax.io/anthropic",
+      "env": {
+        "ANTHROPIC_BASE_URL": "https://api.minimax.io/anthropic",
+        "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+        "ANTHROPIC_MODEL": "MiniMax-M2.7",
+        "ANTHROPIC_SMALL_FAST_MODEL": "MiniMax-M2.7",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7",
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7"
+      }
+    },
+    {
+      "id": "openai-responses-api",
+      "protocol": "openai-responses",
+      "auth": "apiKey",
+      "injectVia": "none",
+      "baseUrl": "https://api.openai.com/v1/responses"
+    },
+    {
+      "id": "claude-messages-api",
+      "protocol": "anthropic-messages",
+      "auth": "apiKey",
+      "injectVia": "none",
+      "baseUrl": "https://api.anthropic.com/v1/messages"
+    },
+    {
+      "id": "openrouter-chat",
+      "protocol": "openai-chat-completions",
+      "auth": "apiKey",
+      "injectVia": "url",
+      "baseUrl": "https://openrouter.ai/api/v1"
+    },
+    {
+      "id": "local-openai-chat",
+      "protocol": "openai-chat-completions",
+      "auth": "none",
+      "injectVia": "url",
+      "baseUrl": "http://localhost:11434/v1"
+    },
+    {
+      "id": "cursor-login",
+      "protocol": "cursor-agent",
+      "auth": "harness",
+      "injectVia": "none"
+    },
+    {
+      "id": "cursor-api-key",
+      "protocol": "cursor-agent",
+      "auth": "apiKey",
+      "injectVia": "none"
+    },
+    {
+      "id": "openai-images-api",
+      "protocol": "openai-images",
+      "auth": "apiKey",
+      "injectVia": "none",
+      "baseUrl": "https://api.openai.com/v1"
+    },
+    {
+      "id": "gemini-image-api",
+      "protocol": "gemini-generate-content",
+      "auth": "apiKey",
+      "injectVia": "none",
+      "baseUrl": "https://generativelanguage.googleapis.com/v1beta"
+    }
+  ],
+  "presets": [
+    {
+      "presetId": "builtin.claude-cli/claude-cli",
+      "harnessRef": "claude-cli",
+      "backendRef": "claude-harness",
+      "displayName": "ClaudeCode",
+      "enabled": true,
+      "preferredColorIds": ["claude-orange", "lavender-soft"],
+      "models": [
+        { "id": "opus", "short": "Opus", "pricing": { "input": 5, "output": 25, "cached": 0 }, "efforts": ["low", "medium", "high", "xhigh", "max"], "tier": 1 },
+        { "id": "sonnet", "short": "Sonnet", "pricing": { "input": 3, "output": 15, "cached": 0 }, "efforts": ["low", "medium", "high", "xhigh", "max"], "tier": 2 },
+        { "id": "haiku", "short": "Haiku", "pricing": { "input": 1, "output": 5, "cached": 0 }, "efforts": ["low", "medium", "high", "xhigh", "max"], "tier": 3 },
+        { "id": "fable", "short": "Fable", "pricing": { "input": 10, "output": 50, "cached": 0 }, "efforts": ["low", "medium", "high", "xhigh", "max"], "tier": 1 }
+      ]
+    },
+    {
+      "presetId": "builtin.claude-terminal/claude-terminal",
+      "harnessRef": "claude-terminal",
+      "backendRef": "claude-harness",
+      "displayName": "ClaudeCode Terminal",
+      "enabled": true,
+      "preferredColorIds": ["claude-orange", "lavender-soft"],
+      "models": [
+        { "id": "opus", "short": "Opus", "tier": 1 },
+        { "id": "sonnet", "short": "Sonnet", "tier": 2 }
+      ]
+    },
+    {
+      "presetId": "builtin.codex-cli/codex-cli",
+      "harnessRef": "codex-cli",
+      "backendRef": "codex-harness",
+      "displayName": "Codex CLI",
+      "enabled": true,
+      "preferredColorIds": ["codex-teal", "sky-blue"],
+      "models": [
+        { "id": "gpt-5.5", "short": "GPT 5.5", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
+        { "id": "gpt-5.4", "short": "GPT 5.4", "pricing": { "input": 2.5, "output": 15, "cached": 0.25 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
+        { "id": "gpt-5.4-mini", "short": "GPT 5.4M", "pricing": { "input": 0.75, "output": 4.5, "cached": 0.075 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 3 },
+        { "id": "gpt-5.3-codex", "short": "Codex 5.3", "pricing": { "input": 1.75, "output": 14, "cached": 0.175 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 2 },
+        { "id": "gpt-5.3-codex-spark", "short": "Codex 5.3 Spark", "pricing": { "input": 1.75, "output": 14, "cached": 0.175 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 2 }
+      ]
+    },
+    {
+      "presetId": "builtin.gemini-cli/gemini-cli",
+      "harnessRef": "gemini-cli",
+      "backendRef": "gemini-harness",
+      "displayName": "Gemini CLI",
+      "enabled": true,
+      "preferredColorIds": ["gemini-blue", "sky-blue"],
+      "models": [
+        { "id": "auto", "short": "Gemini Auto", "pricing": { "input": 1.25, "output": 10, "cached": 0 }, "tier": 1 },
+        { "id": "gemini-3-pro-preview", "short": "Gem3 Pro", "pricing": { "input": 1.25, "output": 10, "cached": 0 }, "tier": 1 },
+        { "id": "gemini-2.5-pro", "short": "Gem2 Pro", "pricing": { "input": 1.25, "output": 10, "cached": 0 }, "tier": 1 },
+        { "id": "gemini-2.5-flash", "short": "Gem2 Flash", "pricing": { "input": 0.3, "output": 2.5, "cached": 0 }, "tier": 2 },
+        { "id": "gemini-2.5-flash-lite", "short": "Gem2 Lite", "pricing": { "input": 0.1, "output": 0.4, "cached": 0 }, "tier": 3 }
+      ]
+    },
+    {
+      "presetId": "builtin.claude-cli/glm-cc-cli",
+      "harnessRef": "claude-cli",
+      "backendRef": "glm-anthropic-env",
+      "displayName": "GLM (ClaudeCode)",
+      "enabled": true,
+      "preferredColorIds": ["claude-orange", "lavender-soft"],
+      "streamPolicy": {
+        "suppress": [
+          { "type": "system", "subtype": "thinking_tokens", "mode": "activity-only" }
+        ]
+      },
+      "models": [
+        { "id": "glm-5.2", "short": "GLM 5.2", "pricing": { "input": 1.4, "output": 4.4, "cached": 0.26 }, "tier": 1, "maxConcurrency": 10 },
+        { "id": "glm-5.1", "short": "GLM 5.1", "pricing": { "input": 1.4, "output": 4.4, "cached": 0.26 }, "tier": 2, "maxConcurrency": 10 },
+        { "id": "glm-5-turbo", "short": "GLM 5 Turbo", "pricing": { "input": 1.2, "output": 4, "cached": 0.24 }, "tier": 2, "maxConcurrency": 1 },
+        { "id": "glm-5", "short": "GLM 5", "pricing": { "input": 1, "output": 3.2, "cached": 0.2 }, "tier": 2, "maxConcurrency": 2 },
+        { "id": "glm-4.7", "short": "GLM 4.7", "pricing": { "input": 0.6, "output": 2.2, "cached": 0.11 }, "tier": 2, "maxConcurrency": 2 },
+        { "id": "glm-4.7-flash", "short": "GLM 4.7 Flash", "pricing": { "input": 0, "output": 0, "cached": 0 }, "tier": 3, "maxConcurrency": 1 },
+        { "id": "glm-4.5-air", "short": "GLM 4.5 Air", "pricing": { "input": 0.2, "output": 1.1, "cached": 0.03 }, "tier": 3, "maxConcurrency": 3 }
+      ]
+    },
+    {
+      "presetId": "builtin.claude-cli/minimax-cc-cli",
+      "harnessRef": "claude-cli",
+      "backendRef": "minimax-anthropic-env",
+      "displayName": "Minimax (ClaudeCode)",
+      "enabled": true,
+      "preferredColorIds": ["lavender-soft", "plum"],
+      "models": [
+        { "id": "minimax-m2.7", "short": "Minimax M2.7", "tier": 1 }
+      ]
+    },
+    {
+      "presetId": "builtin.openai-image/openai",
+      "harnessRef": "openai-image",
+      "backendRef": "openai-images-api",
+      "displayName": "OpenAI Image",
+      "enabled": true,
+      "preferredColorIds": ["openai-green", "sage-green"],
+      "models": [
         {
-            "providerId": "builtin.claude-cli/claude-cli",
-            "displayName": "ClaudeCode",
-            "type": "CLI",
-            "workerId": "builtin.claude-cli/claude-cli",
-            "enabled": true,
-            "requiredFields": [],
-            "maxConcurrency": 3,
-            "preferredColorIds": [
-                "claude-orange",
-                "lavender-soft"
-            ],
-            "models": [
-                {
-                    "name": "opus",
-                    "short": "Opus",
-                    "pricing": {
-                        "input": 5,
-                        "output": 25,
-                        "cached": 0
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh",
-                        "max"
-                    ],
-                    "tier": 1
-                },
-                {
-                    "name": "sonnet",
-                    "short": "Sonnet",
-                    "pricing": {
-                        "input": 3,
-                        "output": 15,
-                        "cached": 0
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh",
-                        "max"
-                    ],
-                    "tier": 2
-                },
-                {
-                    "name": "haiku",
-                    "short": "Haiku",
-                    "pricing": {
-                        "input": 1,
-                        "output": 5,
-                        "cached": 0
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh",
-                        "max"
-                    ],
-                    "tier": 3
-                }
-            ]
-        },
-        {
-            "providerId": "builtin.codex-cli/codex-cli",
-            "displayName": "Codex CLI",
-            "type": "CLI",
-            "workerId": "builtin.codex-cli/codex-cli",
-            "enabled": true,
-            "requiredFields": [],
-            "maxConcurrency": 3,
-            "preferredColorIds": [
-                "codex-teal",
-                "sky-blue"
-            ],
-            "models": [
-                {
-                    "name": "gpt-5.5",
-                    "short": "GPT 5.5",
-                    "pricing": {
-                        "input": 5,
-                        "output": 30,
-                        "cached": 0.5
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 1
-                },
-                {
-                    "name": "gpt-5.4",
-                    "short": "GPT 5.4",
-                    "pricing": {
-                        "input": 2.5,
-                        "output": 15,
-                        "cached": 0.25
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 1
-                },
-                {
-                    "name": "gpt-5.4-mini",
-                    "short": "GPT 5.4M",
-                    "pricing": {
-                        "input": 0.75,
-                        "output": 4.5,
-                        "cached": 0.075
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 3
-                },
-                {
-                    "name": "gpt-5.3-codex",
-                    "short": "Codex 5.3",
-                    "pricing": {
-                        "input": 1.75,
-                        "output": 14,
-                        "cached": 0.175
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 2
-                },
-                {
-                    "name": "gpt-5.3-codex-spark",
-                    "short": "Codex 5.3 Spark",
-                    "pricing": {
-                        "input": 1.75,
-                        "output": 14,
-                        "cached": 0.175
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 2
-                }
-            ]
-        },
-        {
-            "providerId": "builtin.gemini-cli/gemini-cli",
-            "displayName": "Gemini CLI",
-            "type": "CLI",
-            "workerId": "builtin.gemini-cli/gemini-cli",
-            "enabled": true,
-            "requiredFields": [],
-            "maxConcurrency": 3,
-            "preferredColorIds": [
-                "gemini-blue",
-                "sky-blue"
-            ],
-            "models": [
-                {
-                    "name": "auto",
-                    "short": "Gemini Auto",
-                    "pricing": {
-                        "input": 1.25,
-                        "output": 10,
-                        "cached": 0
-                    },
-                    "tier": 1
-                },
-                {
-                    "name": "gemini-3-pro-preview",
-                    "short": "Gem3 Pro",
-                    "pricing": {
-                        "input": 1.25,
-                        "output": 10,
-                        "cached": 0
-                    },
-                    "tier": 1
-                },
-                {
-                    "name": "gemini-2.5-pro",
-                    "short": "Gem2 Pro",
-                    "pricing": {
-                        "input": 1.25,
-                        "output": 10,
-                        "cached": 0
-                    },
-                    "tier": 1
-                },
-                {
-                    "name": "gemini-2.5-flash",
-                    "short": "Gem2 Flash",
-                    "pricing": {
-                        "input": 0.3,
-                        "output": 2.5,
-                        "cached": 0
-                    },
-                    "tier": 2
-                },
-                {
-                    "name": "gemini-2.5-flash-lite",
-                    "short": "Gem2 Lite",
-                    "pricing": {
-                        "input": 0.1,
-                        "output": 0.4,
-                        "cached": 0
-                    },
-                    "tier": 3
-                }
-            ]
-        },
-        {
-            "providerId": "builtin.claude-cli/glm-cc-cli",
-            "displayName": "GLM (ClaudeCode)",
-            "type": "CLI",
-            "workerId": "builtin.claude-cli/claude-cli",
-            "enabled": true,
-            "url": "https://api.z.ai/api/anthropic",
-            "requiredFields": [
-                "apiKey"
-            ],
-            "maxConcurrency": 3,
-            "env": {
-                "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
-                "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.1",
-                "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5-turbo",
-                "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
-                "ANTHROPIC_MODEL": "glm-5.1",
-                "ANTHROPIC_SMALL_FAST_MODEL": "glm-4.5-air"
-            },
-            "preferredColorIds": [
-                "claude-orange",
-                "lavender-soft"
-            ],
-            "models": [
-                {
-                    "name": "glm-5.1",
-                    "short": "GLM 5.1",
-                    "pricing": {
-                        "input": 1.4,
-                        "output": 4.4,
-                        "cached": 0.26
-                    },
-                    "tier": 1
-                },
-                {
-                    "name": "glm-5-turbo",
-                    "short": "GLM 5 Turbo",
-                    "pricing": {
-                        "input": 1.2,
-                        "output": 4,
-                        "cached": 0.24
-                    },
-                    "tier": 2
-                },
-                {
-                    "name": "glm-5",
-                    "short": "GLM 5",
-                    "pricing": {
-                        "input": 1,
-                        "output": 3.2,
-                        "cached": 0.2
-                    },
-                    "tier": 2
-                },
-                {
-                    "name": "glm-4.7",
-                    "short": "GLM 4.7",
-                    "pricing": {
-                        "input": 0.6,
-                        "output": 2.2,
-                        "cached": 0.11
-                    },
-                    "tier": 2
-                },
-                {
-                    "name": "glm-4.7-flash",
-                    "short": "GLM 4.7 Flash",
-                    "pricing": {
-                        "input": 0,
-                        "output": 0,
-                        "cached": 0
-                    },
-                    "tier": 3
-                },
-                {
-                    "name": "glm-4.5-air",
-                    "short": "GLM 4.5 Air",
-                    "pricing": {
-                        "input": 0.2,
-                        "output": 1.1,
-                        "cached": 0.03
-                    },
-                    "tier": 3
-                }
-            ]
-        },
-        {
-            "providerId": "builtin.claude-cli/minimax-cc-cli",
-            "displayName": "Minimax (ClaudeCode)",
-            "type": "CLI",
-            "workerId": "builtin.claude-cli/claude-cli",
-            "enabled": true,
-            "url": "https://api.minimax.io/anthropic",
-            "requiredFields": [
-                "apiKey"
-            ],
-            "maxConcurrency": 3,
-            "env": {
-                "ANTHROPIC_BASE_URL": "https://api.minimax.io/anthropic",
-                "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
-                "ANTHROPIC_MODEL": "MiniMax-M2.7",
-                "ANTHROPIC_SMALL_FAST_MODEL": "MiniMax-M2.7",
-                "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
-                "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7",
-                "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7"
-            },
-            "preferredColorIds": [
-                "lavender-soft",
-                "plum"
-            ],
-            "models": [
-                {
-                    "name": "minimax-m2.7",
-                    "short": "Minimax M2.7",
-                    "tier": 1
-                }
-            ]
-        },
-        {
-            "providerId": "builtin.openai-api/openai",
-            "displayName": "OpenAI (API)",
-            "type": "REST",
-            "workerId": "builtin.openai-api/openai-api",
-            "enabled": true,
-            "url": "https://api.openai.com/v1/responses",
-            "requiredFields": [
-                "apiKey"
-            ],
-            "maxConcurrency": 5,
-            "preferredColorIds": [
-                "openai-green",
-                "sage-green"
-            ],
-            "models": [
-                {
-                    "name": "gpt-5.5",
-                    "short": "GPT 5.5",
-                    "pricing": {
-                        "input": 5,
-                        "output": 30,
-                        "cached": 0.5
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 1
-                },
-                {
-                    "name": "gpt-5.4",
-                    "short": "GPT 5.4",
-                    "pricing": {
-                        "input": 2.5,
-                        "output": 15,
-                        "cached": 0.25
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 1
-                },
-                {
-                    "name": "gpt-5.4-mini",
-                    "short": "GPT 5.4M",
-                    "pricing": {
-                        "input": 0.75,
-                        "output": 4.5,
-                        "cached": 0.075
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 3
-                },
-                {
-                    "name": "gpt-5.4-nano",
-                    "short": "GPT 5.4N",
-                    "pricing": {
-                        "input": 0.2,
-                        "output": 1.25,
-                        "cached": 0.02
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high",
-                        "xhigh"
-                    ],
-                    "tier": 3
-                }
-            ]
-        },
-        {
-            "providerId": "builtin.claude-api/claude-api",
-            "displayName": "Claude (API)",
-            "type": "REST",
-            "workerId": "builtin.claude-api/claude-api",
-            "enabled": true,
-            "url": "https://api.anthropic.com/v1/messages",
-            "requiredFields": [
-                "apiKey"
-            ],
-            "maxConcurrency": 5,
-            "preferredColorIds": [
-                "claude-orange",
-                "lavender-soft"
-            ],
-            "models": [
-                {
-                    "name": "claude-opus-4-20250514",
-                    "short": "Opus4",
-                    "pricing": {
-                        "input": 15,
-                        "output": 75,
-                        "cached": 0
-                    },
-                    "tier": 1
-                },
-                {
-                    "name": "claude-sonnet-4-20250514",
-                    "short": "Sonnet4",
-                    "pricing": {
-                        "input": 3,
-                        "output": 15,
-                        "cached": 0
-                    },
-                    "efforts": [
-                        "low",
-                        "medium",
-                        "high"
-                    ],
-                    "tier": 2
-                }
-            ]
+          "id": "gpt-image-2",
+          "short": "DuckTape",
+          "tier": 1,
+          "controls": [
+            {
+              "key": "quality",
+              "label": "Quality",
+              "type": "select",
+              "defaultValue": "auto",
+              "options": [
+                { "label": "Auto", "value": "auto" },
+                { "label": "Low", "value": "low" },
+                { "label": "Medium", "value": "medium" },
+                { "label": "High", "value": "high" }
+              ]
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "presetId": "builtin.gemini-image/gemini",
+      "harnessRef": "gemini-image",
+      "backendRef": "gemini-image-api",
+      "displayName": "Gemini Image",
+      "enabled": true,
+      "preferredColorIds": ["gemini-blue", "sky-blue"],
+      "models": [
+        { "id": "gemini-3-pro-image", "short": "Nano Banana Pro", "tier": 1 },
+        { "id": "gemini-3.1-flash-image", "short": "Nano Banana 2", "tier": 2 },
+        { "id": "gemini-3.1-flash-lite-image", "short": "Nano Banana 2 Lite", "tier": 3 }
+      ]
+    },
+    {
+      "presetId": "builtin.openai-api/openai",
+      "harnessRef": "openai-api",
+      "backendRef": "openai-responses-api",
+      "displayName": "OpenAI (API)",
+      "enabled": true,
+      "preferredColorIds": ["openai-green", "sage-green"],
+      "models": [
+        { "id": "gpt-5.5", "short": "GPT 5.5", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
+        { "id": "gpt-5.4", "short": "GPT 5.4", "pricing": { "input": 2.5, "output": 15, "cached": 0.25 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
+        { "id": "gpt-5.4-mini", "short": "GPT 5.4M", "pricing": { "input": 0.75, "output": 4.5, "cached": 0.075 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 3 },
+        { "id": "gpt-5.4-nano", "short": "GPT 5.4N", "pricing": { "input": 0.2, "output": 1.25, "cached": 0.02 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 3 }
+      ]
+    },
+    {
+      "presetId": "builtin.claude-api/claude-api",
+      "harnessRef": "claude-api",
+      "backendRef": "claude-messages-api",
+      "displayName": "Claude (API)",
+      "enabled": true,
+      "preferredColorIds": ["claude-orange", "lavender-soft"],
+      "models": [
+        { "id": "claude-opus-4-20250514", "short": "Opus4", "pricing": { "input": 15, "output": 75, "cached": 0 }, "tier": 1 },
+        { "id": "claude-sonnet-4-20250514", "short": "Sonnet4", "pricing": { "input": 3, "output": 15, "cached": 0 }, "efforts": ["low", "medium", "high"], "tier": 2 }
+      ]
+    },
+    {
+      "presetId": "builtin.openai-compat/openrouter",
+      "harnessRef": "openai-compat",
+      "backendRef": "openrouter-chat",
+      "displayName": "OpenRouter / OpenAI-compatible",
+      "enabled": true,
+      "preferredColorIds": ["openai-green", "sky-blue"],
+      "models": []
+    },
+    {
+      "presetId": "builtin.openai-compat/local",
+      "harnessRef": "openai-compat",
+      "backendRef": "local-openai-chat",
+      "displayName": "Local OpenAI-compatible",
+      "enabled": true,
+      "preferredColorIds": ["sage-green", "slate"],
+      "models": []
+    },
+    {
+      "presetId": "builtin.cursor-cli/cursor-api-key",
+      "harnessRef": "cursor-cli",
+      "backendRef": "cursor-api-key",
+      "displayName": "Cursor CLI (API Key)",
+      "enabled": true,
+      "preferredColorIds": ["sky-blue", "slate"],
+      "models": []
+    },
+    {
+      "presetId": "builtin.cursor-cli/cursor-login",
+      "harnessRef": "cursor-cli",
+      "backendRef": "cursor-login",
+      "displayName": "Cursor CLI (login)",
+      "enabled": false,
+      "preferredColorIds": ["slate", "sky-blue"],
+      "models": []
+    }
+  ]
 }
