@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-07-04T00:00:00Z",
+  "lastUpdated": "2026-07-09T00:01:00Z",
   "harnesses": [
     { "id": "claude-cli", "displayName": "Claude Code CLI" },
     { "id": "claude-terminal", "displayName": "ClaudeCode Terminal" },
@@ -41,11 +41,11 @@
       "env": {
         "ANTHROPIC_BASE_URL": "https://api.minimax.io/anthropic",
         "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
-        "ANTHROPIC_MODEL": "MiniMax-M2.7",
-        "ANTHROPIC_SMALL_FAST_MODEL": "MiniMax-M2.7",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7",
-        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7"
+        "ANTHROPIC_MODEL": "minimax-m3",
+        "ANTHROPIC_SMALL_FAST_MODEL": "minimax-m2.7",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "minimax-m2.7",
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "minimax-m3",
+        "ANTHROPIC_DEFAULT_HAIKU_MODEL": "minimax-m2.7"
       }
     },
     {
@@ -138,6 +138,9 @@
       "enabled": true,
       "preferredColorIds": ["codex-teal", "sky-blue"],
       "models": [
+        { "id": "gpt-5.6-sol", "short": "5.6 Sol", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
+        { "id": "gpt-5.6-terra", "short": "5.6 Terra", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
+        { "id": "gpt-5.6-luna", "short": "5.6 Luna", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
         { "id": "gpt-5.5", "short": "GPT 5.5", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
         { "id": "gpt-5.4", "short": "GPT 5.4", "pricing": { "input": 2.5, "output": 15, "cached": 0.25 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
         { "id": "gpt-5.4-mini", "short": "GPT 5.4M", "pricing": { "input": 0.75, "output": 4.5, "cached": 0.075 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 3 },
@@ -190,7 +193,9 @@
       "enabled": true,
       "preferredColorIds": ["lavender-soft", "plum"],
       "models": [
-        { "id": "minimax-m2.7", "short": "Minimax M2.7", "tier": 1 }
+        { "id": "minimax-m3", "short": "M3", "tier": 1 },
+        { "id": "minimax-m2.7-highspeed", "short": "M2.7 Speed", "tier": 2 },
+        { "id": "minimax-m2.7", "short": "M2.7", "tier": 2 }
       ]
     },
     {
@@ -243,6 +248,9 @@
       "enabled": true,
       "preferredColorIds": ["openai-green", "sage-green"],
       "models": [
+        { "id": "gpt-5.6-sol", "short": "5.6 Sol", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
+        { "id": "gpt-5.6-terra", "short": "5.6 Terra", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
+        { "id": "gpt-5.6-luna", "short": "5.6 Luna", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
         { "id": "gpt-5.5", "short": "GPT 5.5", "pricing": { "input": 5, "output": 30, "cached": 0.5 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
         { "id": "gpt-5.4", "short": "GPT 5.4", "pricing": { "input": 2.5, "output": 15, "cached": 0.25 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 1 },
         { "id": "gpt-5.4-mini", "short": "GPT 5.4M", "pricing": { "input": 0.75, "output": 4.5, "cached": 0.075 }, "efforts": ["low", "medium", "high", "xhigh"], "tier": 3 },
